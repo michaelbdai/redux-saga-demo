@@ -7,7 +7,18 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: 'babel?presets[]=react&presets[]=es2015&presets[]=stage-0&plugins[]=transform-decorators-legacy&plugins[]=transform-object-rest-spread'
+                loader: 'babel',
+                query: {
+                    presets: [
+                        'react',
+                        'es2015',
+                        'stage-0'
+                    ],
+                    plugins: [
+                        'transform-decorators-legacy',
+                        'transform-object-rest-spread'
+                    ]
+                }
             },
             {
                 test: /\.css$/,

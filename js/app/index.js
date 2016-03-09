@@ -1,15 +1,24 @@
+import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import reducers from './reducers/index';
-import {createStore} from 'redux';
+import redux from './reducers/redux';
+import sagas from './reducers/sagas';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import style from './style.css';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import Game from './containers/Game';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = createStore(reducers);
+    const store = createStore(
+        redux,
+        applyMiddleware(
+            createSagaMiddleware(...sagas)
+        )
+    );
 
     ReactDOM.render(
         <div className={style.applicationWrapper}>

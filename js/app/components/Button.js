@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 
-const Button = ({ label, onClick }) => {
+const Button = ({ label, disabled, onClick }) => {
     return (
         <button onClick={e => {
             e.preventDefault();
             onClick();
-       }}>
+       }} disabled={disabled}>
             {label}
         </button>
     )
@@ -13,7 +13,8 @@ const Button = ({ label, onClick }) => {
 
 Button.propTypes = {
     label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    disabled: React.PropTypes.bool
 };
 
 export default Button;
