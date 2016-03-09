@@ -28,6 +28,7 @@ function game(current, action) {
         case endType:
             return current.set('state', 'over');
         default:
+            // initial state
             return current || Immutable.Map({
                     state: 'ready'
                 });
