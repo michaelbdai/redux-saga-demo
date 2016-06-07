@@ -32,7 +32,9 @@ const startType = start().type;
 const nextType = next().type;
 
 function* onGameStart() {
-    yield* takeEvery(startType, () => put(next(0), randomBoolean(0.7)));
+    yield* takeEvery(startType, () => put(
+        next(0, randomBoolean(0.7))
+    ));
 }
 
 function* onGameNext() {
